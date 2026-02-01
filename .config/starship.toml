@@ -60,3 +60,7 @@ symbol = "󰌠 "
 [java]
 symbol = "󰬷 "
 style = "bold red"
+
+[rust]
+symbol = " "
+style = "bold maroon"
