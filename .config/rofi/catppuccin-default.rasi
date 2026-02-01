@@ -11,7 +11,8 @@
   alternate-urgent-background: @lightbg;
   lightbg:                     @mantle;
   background-color:            transparent;
-  border-color:                @foreground;
+  //border-color:                @foreground;
+  border-color: @mauve;
   normal-background:           @background;
   selected-urgent-background:  @red;
   alternate-active-background: @lightbg;
@@ -31,7 +32,6 @@
   normal-foreground:           @foreground;
   alternate-urgent-foreground: @red;
   alternate-active-foreground: @blue;
-
 }
 element {
     padding: 1px ;
@@ -91,6 +91,8 @@ window {
     padding:          5;
     background-color: @background;
     border:           1;
+    // Added by me
+    border-radius: 5px;
 }
 mainbox {
     padding: 0;
@@ -117,7 +119,8 @@ scrollbar {
     padding:      0;
     handle-width: 8px ;
     border:       0;
-    handle-color: @normal-foreground;
+    //handle-color: @normal-foreground;
+    handle-color: @mauve;
 }
 sidebar {
     border-color: @separatorcolor;
