@@ -1,0 +1,87 @@
+@use "mocha" as *;
+
+* { all: unset; font-family: "JetBrainsMono Nerd Font Mono Bold"; }
+
+.mainbox {
+  background-color: $base;
+  border-radius: 10px;
+  border: 2px solid;
+  border-color: $mauve;
+  padding: 12px;
+}
+
+.music-widget {
+  transition: opacity 0.3s ease;
+  padding: 0px;
+  padding-right: 12px;
+}
+
+
+.music-cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.music-info {
+  background-color: $base;
+  transition: background-color 0.3s ease;
+}
+
+
+.spotify-logo {
+  color: $mauve;
+  font-size: 20px;
+}
+
+.title {
+  color: $text;
+  font-size: 20px;
+  font-weight: 800;
+}
+.artist {
+  color: $subtext0;
+  font-size: 14px;
+}
+
+.music-progress-wrapper {
+  margin: 8px 0;
+}
+
+.music-progress {
+  min-height: 6px;
+  border-radius: 3px;
+}
+
+.music-progress trough {
+  background-color: $mantle;
+  border-radius: 3px;
+  min-height: 6px;
+}
+
+.music-progress trough progress {
+  background-color: $mauve;
+  border-radius: 3px;
+  min-height: 6px;
+}
+
+.music-progress:hover trough progress {
+  background-color: $crust;
+}
+
+.controls button {
+  color: $text;
+  font-size: 20px;
+  padding: 6px;
+  transition: color 0.2s;
+  min-width: 32px;
+}
+.controls button:hover {
+  color: $mauve;
+}
+
+.clock {
+  font-size: 24px;
+  color: $text;
+  font-weight: bold;
+}

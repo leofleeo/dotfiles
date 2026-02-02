@@ -1,0 +1,87 @@
+(defpoll sp :interval "500ms" `~/.config/eww/scripts/spotify-mini.sh`)
+(defvar music_hover false)
+
+(defwidget spotify_card []
+  (revealer :transition "slideup"
+            :reveal {sp.visible == "true"}
+            :duration "500ms"
+    (eventbox :onhover "eww update music_hover=true"
+              :onhoverlost "~/.config/eww/scripts/hover-timeout.sh &"
+      (box :class "mainbox music-widget"
+           :orientation "h"
+           :space-evenly false
+           :style "border-radius: 10px;"
+        
+        ;; LEWA: Okładka (mniejsza, zaokrąglona)
+        (box :class "music-cover"
+             :style "background-image: url('${sp.cover}'); min-width: 120px; min-height:120px; border-radius: 10px 0 0 10px;")
+
+        ;;(image :class "music-cover" :path "${sp.cover}" :image-height 120 :style "min-width: 100px; min-height:100px; border-radius: 10px 0 0 10px;")
+        
+        ;; PRAWA: Info
+        (box :class "music-info"
+             :orientation "v"
+             :space-evenly false
+             :hexpand true
+             :style "padding: 12px;"
+          
+          ;; Logo Spotify górne prawe
+          (box :orientation "h" :halign "end"
+            (label :class "spotify-logo" :text "󰝚"))
+          
+          ;; Tekst centralny
+          (box :orientation "v" :space-evenly false :spacing 2 :vexpand true :valign "center" :hexpand true
+            (label :class "title"  :text {sp.title}  :limit-width 25 :xalign 0 :wrap true)
+            (label :class "artist" :text {sp.artist} :limit-width 25 :xalign 0 :wrap true))
+          
+          ;; Progress bar
+(box :class "music-progress-wrapper" :orientation "v"
+    (progress :class "music-progress"
+              :value {sp.fraction * 100}
+              :orientation "h"))
+
+          
+          ;; Kontrolki
+          (box :class "controls" :orientation "h" :spacing 8 :halign "center" :valign "end"
+            (button :onclick "playerctl --player=spotify previous" "")
+            (button :onclick "playerctl --player=spotify play-pause && ~/.config/eww/scripts/spotify-mini.sh || eww update sp"  {sp.status == "Playing" ? "" : ""})
+            (button :onclick "playerctl --player=spotify next" ""))
+        )
+      )
+    )
+  )
+)
+
+(defwidget clock24 []
+ (box :class "mainbox clock" :orientation "horizontal" :halign "start" "${formattime(EWW_TIME, "%H:%m")}")
+)
+
+(defwidget clock12 []
+  (box :class "mainbox clock" :orientation "horizontal" :halign "start" "${formattime(EWW_TIME, "%I:%m %p")}")
+)
+
+(defwidget date []
+  (box :class "mainbox clock" :orientation "horizontal" :halign "start" "${formattime(EWW_TIME, "%a %b %d")}")
+)
+
+(defwindow spotify
+  :monitor 0
+  :geometry (geometry :x "20px" :y "20px" :width "500px" :height "120px" :anchor "bottom left")
+  :stacking "bg"
+  :exclusive false
+  (spotify_card))
+
+(defwindow infos
+  :monitor 0
+  :geometry (geometry :x "20px" :y "20px" :width "500px" :height "200px" :anchor "bottom left")
+  :stacking "bg"
+  :exclusive false
+  (box :orientation "vertical" :spacing 10 :space-evenly false :valign "end"
+    (box :orientation "horizontal" :spacing 10 :space-evenly false :halign "start"
+      (date)
+      (clock24)
+      (clock12)
+    )
+    (spotify_card)
+  )
+)
