@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Modified from https://github.com/mrHeavenli/rofi-playerctl
+
 status_function () {
 	if playerctl status > /dev/null; then
 			echo "$(playerctl status -f "{{playerName}}"): $(playerctl metadata -f "{{trunc(default(title, \"[Unknown]\"), 25)}} by {{trunc(default(artist, \"[Unknown]\"), 25)}}") ($(playerctl status))"
