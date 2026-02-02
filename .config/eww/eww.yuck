@@ -53,11 +53,11 @@
 )
 
 (defwidget clock24 []
- (box :class "mainbox clock" :orientation "horizontal" :halign "start" "${formattime(EWW_TIME, "%H:%m")}")
+ (box :class "mainbox clock" :orientation "horizontal" :halign "start" "${formattime(EWW_TIME, "%H:%M")}")
 )
 
 (defwidget clock12 []
-  (box :class "mainbox clock" :orientation "horizontal" :halign "start" "${formattime(EWW_TIME, "%I:%m %p")}")
+  (box :class "mainbox clock" :orientation "horizontal" :halign "start" "${formattime(EWW_TIME, "%I:%M %p")}")
 )
 
 (defwidget date []
