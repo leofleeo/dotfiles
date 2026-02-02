@@ -38,6 +38,7 @@ element {
     cursor:  pointer;
     spacing: 5px ;
     border:  0;
+    border-radius: 2px;
 }
 element normal.normal {
     background-color: @normal-background;
@@ -88,11 +89,11 @@ element-icon {
     text-color:       inherit;
 }
 window {
-    padding:          5;
+    padding:          10;
     background-color: @background;
-    border:           1;
+    border:           2;
     // Added by me
-    border-radius: 5px;
+    border-radius: 10px;
 }
 mainbox {
     padding: 0;
