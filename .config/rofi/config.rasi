@@ -1,5 +1,5 @@
 configuration {
-	font: "JetBrainsMono Nerd Font 12";
+	font: "0xProto Nerd Font 12";
 }
 @import "catppuccin-mocha"
 @theme "catppuccin-default"
