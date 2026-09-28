@@ -1,0 +1,103 @@
+[bar.default]
+background_opacity = 0.59999998658895493
+
+[brightness]
+enable_ddcutil = true
+
+[dock]
+background_opacity = 0.59999998658895493
+enabled = true
+launcher_icon = "rocket"
+pinned = [ "firefox", "org.kde.dolphin", "kitty", "spotify-launcher", "steam", "codium" ]
+reserve_space = false
+show_dots = true
+smart_auto_hide = true
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660.0
+
+# Redacted my location as to not doxx myself
+#[location]
+#address = "Wherever"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "DP-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[shell]
+font_family = "Inter"
+polkit_agent = true
+settings_show_advanced = false
+settings_window_translucent = true
+
+    [shell.panel]
+    transparency_mode = "glass"
+
+[theme]
+builtin = "Catppuccin"
+community_palette = "Catppuccin Mocha Mauve-Lavender"
+source = "community"
+
+[wallpaper]
+directory = "/home/devcat/Pictures/wallpapers"
+transition = [ "zoom" ]
+
+    [wallpaper.default]
+    path = "/home/devcat/Pictures/wallpapers/wallhaven-lywpjl_2560x1440.png"
+
+    [wallpaper.last]
+    path = "/home/devcat/Pictures/wallpapers/wallhaven-lywpjl_2560x1440.png"
+
+    [wallpaper.monitors.DP-1]
+    path = "/home/devcat/Pictures/wallpapers/wallhaven-lywpjl_2560x1440.png"
+
+[weather]
+unit = "imperial"

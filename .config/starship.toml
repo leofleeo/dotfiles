@@ -1,12 +1,25 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = false
+add_newline = true
 
-format = '''
-[┌──](bold green) $username$directory$git_branch$golang$rust$java$nodejs$python
-[└─> ](bold green)
-'''
+#format = '''
+#$golang$rust$java$nodejs$python $directory $character
+#'''
+
+format = """
+[ ](red)\
+$username\
+[ ](fg:red bg:peach)\
+$directory\
+[ ](fg:peach bg:yellow)\
+$python\
+$nodejs\
+$golang\
+$rust\
+$java\
+[ ](fg:yellow)
+"""
 
 palette = "catppuccin_mocha"
 
@@ -40,10 +53,23 @@ crust = "#11111b"
 
 
 # Replace the '❯' symbol in the prompt with '➜'
-[character] # The name of the module we are configuring is 'character'
-success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+#[character] # The name of the module we are configuring is 'character'
+#success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
 
 # Disable the package module, hiding it from the prompt completely
+#
+
+[username]
+show_always = true
+style_user = "bg:red fg:base"
+style_root = "bg:red fg:base"
+format = "[$user ]($style)"
+disabled = false
+
+[directory]
+style = "bg:peach fg:base"
+format = "[$path ]($style)"
+
 [package]
 disabled = true
 
@@ -52,15 +78,28 @@ symbol = " "
 
 [golang]
 symbol = " "
-style = "bold sapphire"
+format = "[$symbol($version) ]($style)"
+style = "bg:yellow fg:base"
 
 [python]
 symbol = "󰌠 "
+format = "[$symbol($version) ]($style)"
+style = "bg:yellow fg:base"
 
 [java]
 symbol = "󰬷 "
-style = "bold red"
+style = "bg:yellow fg:base"
+format = "[$symbol($version) ]($style)"
 
 [rust]
 symbol = " "
-style = "bold maroon"
+style = "bg:yellow fg:base"
+format = "[$symbol($version) ]($style)"
+
+[nodejs]
+format = "[$symbol($version) ]($style)"
+style = "bg:yellow fg:base"
+
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
