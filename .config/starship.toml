@@ -9,16 +9,21 @@ add_newline = true
 
 format = """
 [ ](red)\
-$username\
+$os\
 [ ](fg:red bg:peach)\
-$directory\
+$username\
 [ ](fg:peach bg:yellow)\
+$directory\
+[ ](fg:yellow bg:green)\
+$git_branch\
+[ ](fg:green bg:sapphire)\
 $python\
 $nodejs\
 $golang\
 $rust\
 $java\
-[ ](fg:yellow)
+$dart\
+[ ](fg:sapphire)
 """
 
 palette = "catppuccin_mocha"
@@ -61,45 +66,61 @@ crust = "#11111b"
 
 [username]
 show_always = true
-style_user = "bg:red fg:base"
-style_root = "bg:red fg:base"
+style_user = "bg:peach fg:base"
+style_root = "bg:peach fg:base"
 format = "[$user ]($style)"
 disabled = false
 
 [directory]
-style = "bg:peach fg:base"
+style = "bg:yellow fg:base"
 format = "[$path ]($style)"
 
 [package]
 disabled = true
 
+[os]
+disabled = false
+style = "bg:red fg:base"
+
+[os.symbols]
+openSUSE = " "
+SUSE = " "
+Ubuntu = " "
+
 [git_branch]
 symbol = " "
+style = "bg:green fg:base"
+format = "[$symbol$branch ]($style)"
 
 [golang]
 symbol = " "
-format = "[$symbol($version) ]($style)"
-style = "bg:yellow fg:base"
+format = "[$symbol$version ]($style)"
+style = "bg:sapphire fg:base"
 
 [python]
 symbol = "󰌠 "
-format = "[$symbol($version) ]($style)"
-style = "bg:yellow fg:base"
+format = "[$symbol$version ]($style)"
+style = "bg:sapphire fg:base"
 
 [java]
 symbol = "󰬷 "
-style = "bg:yellow fg:base"
-format = "[$symbol($version) ]($style)"
+style = "bg:sapphire fg:base"
+format = "[$symbol$version ]($style)"
 
 [rust]
 symbol = " "
-style = "bg:yellow fg:base"
-format = "[$symbol($version) ]($style)"
+style = "bg:sapphire fg:base"
+format = "[$symbol$version ]($style)"
 
 [nodejs]
-format = "[$symbol($version) ]($style)"
-style = "bg:yellow fg:base"
+format = "[$symbol$version ]($style)"
+style = "bg:sapphire fg:base"
 
-[character]
-success_symbol = "[❯](green)"
-error_symbol = "[❯](red)"
+[dart]
+symbol = " "
+style = "bg:sapphire fg:base"
+format = "[$symbol$version ]($style)"
+
+#[character]
+#success_symbol = "[❯](green)"
+#error_symbol = "[❯](red)"
