@@ -38,7 +38,7 @@ element {
     cursor:  pointer;
     spacing: 5px ;
     border:  0;
-    border-radius: 2px;
+    border-radius: 0px;
 }
 element normal.normal {
     background-color: @normal-background;
@@ -93,7 +93,7 @@ window {
     background-color: @background;
     border:           2;
     // Added by me
-    border-radius: 10px;
+    //border-radius: 8px;
 }
 mainbox {
     padding: 0;

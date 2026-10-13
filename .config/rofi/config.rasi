@@ -1,5 +1,13 @@
 configuration {
-	font: "0xProto Nerd Font 12";
+	font: "Inter 12";
+	show-icons: true;
+    icon-theme: "Hatter-kde-dark";
 }
+
 @import "catppuccin-mocha"
 @theme "catppuccin-default"
+
+window {
+    border-radius: 4px;
+}
+

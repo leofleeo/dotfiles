@@ -1,0 +1,16 @@
+@import "mocha.css";
+
+* {
+  font-family: "Inter", "0xProto Nerd Font", "Open Sans", "JetBrains Mono", sans-serif;
+}
+
+window#waybar {
+  background-color: alpha(@base, 0.6);
+  border: 2px solid alpha(@mauve, 1);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+
+window#waybar > box {
+    padding: 4px 12px;
+}

@@ -25,15 +25,17 @@ hl.monitor({
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
+-- local shell = require("shells.noctalia")
+local shell = require("shells.custom")
 
 -- Set programs that you use
 local terminal = "kitty"
 local fileManager = "dolphin"
 --local menu        = "rofi -show drun -show-icons"
-local menu = "noctalia msg panel-toggle launcher"
+--local menu = "noctalia msg panel-toggle launcher"
 local browser = "firefox"
-local windowSwitcher = "noctalia msg window-switcher"
-local clipboardMenu = "noctalia msg panel-toggle clipboard"
+--local windowSwitcher = "noctalia msg window-switcher"
+--local clipboardMenu = "noctalia msg panel-toggle clipboard"
 local screenshotTool = "hyprshot -m region"
 
 -------------------
@@ -53,10 +55,10 @@ local screenshotTool = "hyprshot -m region"
 
 hl.on("hyprland.start", function()
 	--    hl.exec_cmd("systemctl --user start hyprpolkitagent")
-	hl.exec_cmd("noctalia --daemon")
+	-- hl.exec_cmd("noctalia --daemon")
 	--hl.exec_cmd("eww open infos")
 	hl.exec_cmd("wl-paste --watch cliphist -max-items 250 store")
-	hl.exec_cmd(terminal)
+	--hl.exec_cmd(terminal)
 end)
 
 -------------------------------
@@ -118,7 +120,7 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 0,
+		rounding = 4,
 		rounding_power = 2,
 
 		-- Change transparency of focused and unfocused windows
@@ -178,9 +180,9 @@ hl.animation({ leaf = "layersOut", enabled = true, speed = 1.5, bezier = "linear
 hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 1.79, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "almostLinear" })
 -- og style is fade, default bezier is almostLinear, 1.94, 1.21, 1.92
-hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "easeInOutCubic", style = "slide" })
-hl.animation({ leaf = "workspacesIn", enabled = true, speed = 2, bezier = "easeInOutCubic", style = "slide" })
-hl.animation({ leaf = "workspacesOut", enabled = true, speed = 2, bezier = "easeInOutCubic", style = "slide" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "quick", style = "slidefadevert" })
+--hl.animation({ leaf = "workspacesIn", enabled = true, speed = 2, bezier = "easeInOutCubic", style = "slide" })
+--hl.animation({ leaf = "workspacesOut", enabled = true, speed = 2, bezier = "easeInOutCubic", style = "slide" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
@@ -244,7 +246,7 @@ hl.config({
 		kb_model = "",
 		kb_options = "",
 		kb_rules = "",
-
+		accel_profile = "flat",
 		follow_mouse = 1,
 
 		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
@@ -343,13 +345,12 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
-
 -- Custom binds
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + X", hl.dsp.exec_cmd(clipboardMenu))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(shell.launcher))
+hl.bind(mainMod .. " + X", hl.dsp.exec_cmd(shell.clipboard))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("~/.config/rofi/modes/playerctl.sh"))
-hl.bind("ALT + TAB", hl.dsp.exec_cmd(windowSwitcher))
+hl.bind("ALT + TAB", hl.dsp.exec_cmd(shell.windowSwitcher))
 hl.bind("PRINT", hl.dsp.exec_cmd(screenshotTool))
 
 --------------------------------
@@ -411,5 +412,4 @@ hl.layer_rule({
 })
 
 -- HyprMod managed settings
-require("hyprland-gui")
-
+--require("hyprland-gui")
