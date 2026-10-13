@@ -7,9 +7,8 @@ hl.on("hyprland.start", function()
 end)
 
 hl.layer_rule({ match = { namespace = "waybar" }, blur = true, ignore_alpha = 0.2 })
-hl.layer_rule({ match = { namespace = "nwg-drawer" }, blur = true })
+hl.layer_rule({ match = { namespace = "rofi" }, blur = true })
 hl.layer_rule({ match = { namespace = "notifications" }, blur = true, ignore_alpha = 0.2 })
---hl.bind("ALT + SPACE", hl.dsp.exec_cmd("nwg-drawer -ovl"))
 -- Variables
 local shell = {}
 
